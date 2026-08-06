@@ -78,3 +78,5 @@ gem 'tailwindcss-rails'
 
 
 gem "faraday"
+
+gem "redcarpet"

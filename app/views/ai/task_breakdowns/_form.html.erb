@@ -1,25 +1,29 @@
 <%= form_with model: @task,
-              url: @task.new_record? ? ai_task_breakdowns_path : ai_task_breakdown_path(@task),
-              method: @task.new_record? ? :post : :patch do |f| %>
+              url: ai_task_breakdowns_path,
+              method: :post do |f| %>
 
-  <div class="space-y-6">
+  <div class="space-y-6 max-w-2xl">
 
     <div>
-      <%= f.label :title, "Título", class: "block font-medium mb-2" %>
+      <%= f.label :title, "¿Qué tarea necesitas dividir?",
+                  class: "block font-medium mb-2" %>
 
       <%= f.text_field :title,
-                       class: "w-full max-w-2xl rounded-lg border p-3" %>
+                       placeholder: "Ej: Preparar declaración de la renta",
+                       class: "w-full rounded-lg border p-3" %>
     </div>
 
 
     <div>
-      <%= f.label :description, "Descripción", class: "block font-medium mb-2" %>
+      <%= f.label :description,
+                  "Añade contexto (opcional)",
+                  class: "block font-medium mb-2" %>
 
       <%= f.text_area :description,
-                      rows: 5,
-                      class: "w-full max-w-2xl rounded-lg border p-3" %>
+                      rows: 4,
+                      placeholder: "Ej: Nunca he hecho la declaración y no sé por dónde empezar",
+                      class: "w-full rounded-lg border p-3" %>
     </div>
-
 
     <div class="grid grid-cols-2 gap-4 max-w-2xl">
 
@@ -53,10 +57,8 @@
       <%= f.datetime_local_field :due_date,
                                  class: "w-full max-w-2xl rounded-lg border p-3" %>
     </div>
-
-
-    <%= f.submit "Guardar tarea",
-                 class: "bg-blue-600 text-white px-6 py-3 rounded-lg" %>
+    <%= f.submit "🧠 Dividir con IA",
+                 class: "bg-blue-600 text-white px-6 py-3 rounded-lg cursor-pointer" %>
 
   </div>
 

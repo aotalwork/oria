@@ -67,6 +67,8 @@
     <orderEntry type="library" scope="PROVIDED" name="erb (v6.0.7, Remote: ruby-3.4.10-p104) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.13.1, Remote: ruby-3.4.10-p104) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="et-orbi (v1.4.1, Remote: ruby-3.4.10-p104) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday (v2.14.3, Remote: ruby-3.4.10-p104) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday-net_http (v3.4.4, Remote: ruby-3.4.10-p104) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.17.4, Remote: ruby-3.4.10-p104) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="fugit (v1.13.0, Remote: ruby-3.4.10-p104) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v1.4.0, Remote: ruby-3.4.10-p104) [gem]" level="application" />
@@ -89,6 +91,7 @@
     <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.1.5, Remote: ruby-3.4.10-p104) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v6.0.6, Remote: ruby-3.4.10-p104) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.8.4, Remote: ruby-3.4.10-p104) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="net-http (v0.9.1, Remote: ruby-3.4.10-p104) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-imap (v0.6.6, Remote: ruby-3.4.10-p104) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-pop (v0.1.2, Remote: ruby-3.4.10-p104) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-protocol (v0.2.2, Remote: ruby-3.4.10-p104) [gem]" level="application" />
@@ -147,6 +150,8 @@
     <orderEntry type="library" scope="PROVIDED" name="solid_queue (v1.6.0, Remote: ruby-3.4.10-p104) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sshkit (v1.25.1, Remote: ruby-3.4.10-p104) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="stimulus-rails (v1.3.4, Remote: ruby-3.4.10-p104) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tailwindcss-rails (v4.6.0, Remote: ruby-3.4.10-p104) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tailwindcss-ruby (v4.3.3, Remote: ruby-3.4.10-p104) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v1.5.0, Remote: ruby-3.4.10-p104) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thruster (v0.1.23, Remote: ruby-3.4.10-p104) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="timeout (v0.6.1, Remote: ruby-3.4.10-p104) [gem]" level="application" />

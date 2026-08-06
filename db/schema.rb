@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_06_083327) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_06_120014) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "ai_task_breakdowns", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "response"
+    t.bigint "task_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_ai_task_breakdowns_on_task_id"
+  end
 
   create_table "expenses", force: :cascade do |t|
     t.decimal "amount"
@@ -89,5 +97,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_06_083327) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "ai_task_breakdowns", "tasks"
   add_foreign_key "tasks", "users"
 end

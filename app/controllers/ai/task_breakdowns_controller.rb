@@ -5,11 +5,12 @@ module Ai
 
 
     def index
-      @tasks = current_user.tasks.order(priority: :desc)
+      @tasks = current_user.tasks.order(priority: :desc).order(title: :asc)
     end
 
 
     def show
+      @breakdown = @task.ai_task_breakdown
     end
 
 
@@ -23,26 +24,34 @@ module Ai
 
       if @task.save
 
-        @ai_result = GeminiClient.call(
+        ai_result = GeminiClient.call(
           prompt: <<~PROMPT
-            Divide esta tarea en pasos pequeños:
+        Eres ORIA, un asistente de productividad.
 
-            Título:
-            #{@task.title}
+        Divide esta tarea en pasos pequeños:
 
-            Descripción:
-            #{@task.description}
+        Título:
+        #{@task.title}
 
-            Devuelve:
-            1. Primer paso de menos de 2 minutos
-            2. Pasos siguientes
-            3. Tiempo estimado
-            4. Consejos para terminarla
-          PROMPT
+        Descripción:
+        #{@task.description}
+
+        Devuelve:
+        1. Primer paso de menos de 2 minutos
+        2. Pasos siguientes
+        3. Tiempo estimado
+        4. Consejos para terminarla
+      PROMPT
         )
 
-        redirect_to ai_task_breakdowns_path,
-                    notice: "Tarea creada correctamente."
+
+        @task.create_ai_task_breakdown!(
+          response: ai_result.to_json
+        )
+
+
+        redirect_to ai_task_breakdown_path(@task),
+                    notice: "Tarea dividida correctamente."
 
       else
         render :new, status: :unprocessable_entity
