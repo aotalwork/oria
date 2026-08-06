@@ -1,0 +1,2 @@
+module Ai::RoutinesHelper
+end

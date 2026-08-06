@@ -1,0 +1,66 @@
+<div class="flex justify-between items-center mb-8">
+
+  <h1 class="text-3xl font-bold">
+    Mis tareas
+  </h1>
+
+  <%= link_to "Nueva tarea",
+              new_ai_task_breakdown_path,
+              class: "bg-blue-600 text-white px-5 py-3 rounded-lg" %>
+
+</div>
+
+<div class="space-y-4">
+
+  <% @tasks.each do |task| %>
+
+    <div class="border rounded-xl p-6 shadow-sm">
+
+      <h2 class="text-xl font-semibold">
+        <%= task.title %>
+      </h2>
+
+      <p class="mt-3 text-gray-600">
+        <%= task.description %>
+      </p>
+
+      <!-- AQUÍ VA EL BLOQUE -->
+      <div class="mt-4 flex gap-6 text-sm text-gray-500">
+
+        <span>
+          Prioridad:
+          <strong><%= task.priority %></strong>
+        </span>
+
+        <% if task.due_date.present? %>
+          <span>
+            Fecha:
+            <%= l(task.due_date, format: :short) %>
+          </span>
+        <% end %>
+
+      </div>
+
+      <div class="mt-6 flex gap-3">
+
+        <%= link_to "Ver",
+                    ai_task_breakdown_path(task),
+                    class: "text-blue-600" %>
+
+        <%= link_to "Editar",
+                    edit_ai_task_breakdown_path(task),
+                    class: "text-yellow-600" %>
+
+        <%= button_to "Eliminar",
+                      ai_task_breakdown_path(task),
+                      method: :delete,
+                      data: { turbo_confirm: "¿Eliminar?" },
+                      class: "text-red-600" %>
+
+      </div>
+
+    </div>
+
+  <% end %>
+
+</div>
