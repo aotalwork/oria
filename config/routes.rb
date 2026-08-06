@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
 
   unauthenticated do
-    root "devise/sessions#new"
+    root to: redirect("/users/sign_in")
   end
 
   resources :tasks

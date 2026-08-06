@@ -2,6 +2,9 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @total_tasks = current_user.tasks.count
+    @completed_tasks = current_user.tasks.completed.count
+    @pending_tasks = current_user.tasks.pending.count
     @tools = [
       {
         icon: "🧠",
