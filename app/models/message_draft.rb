@@ -1,0 +1,2 @@
+class MessageDraft < ApplicationRecord
+end

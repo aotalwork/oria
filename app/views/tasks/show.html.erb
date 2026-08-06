@@ -1,0 +1,19 @@
+<h1 class="text-3xl font-bold">
+
+  <%= @task.title %>
+
+</h1>
+
+<p class="mt-6">
+
+  <%= @task.description %>
+
+</p>
+
+<div class="mt-8">
+
+  <%= link_to "Editar",
+              edit_task_path(@task),
+              class: "text-blue-600" %>
+
+</div>

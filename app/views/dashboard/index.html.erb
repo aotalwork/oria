@@ -1,0 +1,15 @@
+<div class="max-w-7xl mx-auto px-6 py-10">
+
+  <h1 class="text-4xl font-bold mb-8">
+    Bienvenida a ORIA 👋
+  </h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    <% @tools.each do |tool| %>
+      <%= render "tool", **tool %>
+    <% end %>
+
+  </div>
+
+</div>
