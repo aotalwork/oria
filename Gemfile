@@ -73,3 +73,5 @@ gem "rubocop", "~> 1.89", group: :development, require: false
 gem "rubocop-rails", "~> 2.36", group: :development, require: false
 
 gem "dotenv-rails", "~> 3.2", groups: [:development, :test]
+
+
