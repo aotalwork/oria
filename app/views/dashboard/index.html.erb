@@ -1,42 +1,40 @@
 <div class="max-w-7xl mx-auto px-6 py-10">
 
   <div class="mb-10">
-
-    <h1 class="text-4xl font-bold">
-      ¡Hola, <%= current_user.email %>! 👋
+    <h1 class="text-4xl tracking-tight">
+    <span class="font-serif italic text-gray-800">
+      <% hour = Time.current.hour %>
+      <%= hour < 12 ? "Buenos días" : hour < 20 ? "Buenas tardes" : "Buenas noches" %>,
+    </span>
+      <span class="font-black text-blue-600 ml-1"><%= current_user.email.split("@").first.capitalize %></span>
     </h1>
-
-    <p class="text-gray-600 mt-2">
-      Bienvenido a ORIA. ¿Qué quieres hacer hoy?
+    <p class="text-gray-500 mt-2 text-lg">
+      Esto es lo que tienes hoy en ORIA.
     </p>
-
   </div>
-
   <div class="grid grid-cols-3 gap-6 mb-10">
 
-    <div class="bg-white rounded-xl p-6 shadow">
-      <p class="text-gray-500">Tareas</p>
-      <h2 class="text-3xl font-bold"><%= @total_tasks %></h2>
+    <div class="bg-white rounded-xl p-6 border border-gray-200 hover:border-gray-300 transition-colors">
+      <p class="text-sm font-medium text-gray-500 uppercase tracking-wide">Tareas</p>
+      <h2 class="text-3xl font-black text-gray-900 mt-1"><%= @total_tasks %></h2>
     </div>
 
-    <div class="bg-white rounded-xl p-6 shadow">
-      <p class="text-gray-500">Pendientes</p>
-      <h2 class="text-3xl font-bold"><%= @pending_tasks %></h2>
+    <div class="bg-white rounded-xl p-6 border border-gray-200 hover:border-gray-300 transition-colors">
+      <p class="text-sm font-medium text-gray-500 uppercase tracking-wide">Pendientes</p>
+      <h2 class="text-3xl font-black text-amber-600 mt-1"><%= @pending_tasks %></h2>
     </div>
 
-    <div class="bg-white rounded-xl p-6 shadow">
-      <p class="text-gray-500">Completadas</p>
-      <h2 class="text-3xl font-bold"><%= @completed_tasks %></h2>
+    <div class="bg-white rounded-xl p-6 border border-gray-200 hover:border-gray-300 transition-colors">
+      <p class="text-sm font-medium text-gray-500 uppercase tracking-wide">Completadas</p>
+      <h2 class="text-3xl font-black text-green-600 mt-1"><%= @completed_tasks %></h2>
     </div>
 
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
     <% @tools.each do |tool| %>
       <%= render "tool", **tool %>
     <% end %>
-
   </div>
 
 </div>
