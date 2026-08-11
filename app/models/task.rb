@@ -5,6 +5,8 @@ class Task < ApplicationRecord
 
   has_one :ai_task_breakdown, dependent: :destroy
 
+  has_many :task_steps, dependent: :destroy
+
   enum :status, {
     pending: "pending",
     completed: "completed"

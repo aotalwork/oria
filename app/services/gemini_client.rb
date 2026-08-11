@@ -1,5 +1,3 @@
-# app/services/gemini_client.rb
-
 require "faraday"
 require "json"
 
@@ -33,7 +31,10 @@ class GeminiClient
               }
             ]
           }
-        ]
+        ],
+        generationConfig: {
+          responseMimeType: "application/json"
+        }
       }.to_json
     end
 
@@ -52,6 +53,8 @@ class GeminiClient
       "content",
       "parts"
     )&.map { |part| part["text"] }&.join("\n")
+
+    raise "Gemini returned an empty response" if text.blank?
 
     Rails.logger.info "GEMINI RESPONSE: #{text.inspect}"
 
