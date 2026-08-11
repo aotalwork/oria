@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_11_090530) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_11_105738) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -47,6 +47,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_11_090530) do
     t.text "motivation"
     t.string "task"
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_procrastinations_on_user_id"
   end
 
   create_table "rewards", force: :cascade do |t|
@@ -119,6 +121,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_11_090530) do
   end
 
   add_foreign_key "ai_task_breakdowns", "tasks"
+  add_foreign_key "procrastinations", "users"
   add_foreign_key "task_steps", "tasks"
   add_foreign_key "tasks", "users"
 end

@@ -4,6 +4,11 @@ module Ai
     before_action :set_task, only: %i[show edit update destroy]
 
     def index
+
+      @total_tasks = current_user.tasks.count
+      @completed_tasks = current_user.tasks.completed.count
+      @pending_tasks = current_user.tasks.pending.count
+
       @tasks = current_user.tasks
                            .order(priority: :desc, title: :asc)
     end

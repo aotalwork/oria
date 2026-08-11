@@ -1,3 +1,21 @@
+<% status_color = case @task.status.to_s
+                  when "pending"
+                    "#d1d5db"
+                  when "completed"
+                    "#22c55e"
+                  else
+                    "#d1d5db"
+                  end %>
+
+<% status_name = case @task.status.to_s
+                 when "pending"
+                   "Pendiente"
+                 when "completed"
+                   "Completada"
+                 else
+                   "Sin estado"
+                 end %>
+
 <div class="max-w-2xl mx-auto">
 
   <% priority_color = case @task.priority
@@ -56,12 +74,32 @@
 
           <div class="mt-3 flex items-center gap-4 text-xs text-gray-400">
 
+            <!-- PRIORIDAD -->
             <span class="flex items-center gap-1">
+
               <span class="w-1.5 h-1.5 rounded-full <%= priority_color %>"></span>
+
               Prioridad <%= priority_name %>
+
             </span>
 
+
+            <!-- ESTADO -->
+            <span class="flex items-center gap-1">
+
+              <span
+                class="w-1.5 h-1.5 rounded-full inline-block"
+                style="background-color: <%= status_color %>;">
+              </span>
+
+              Estado <%= status_name %>
+
+            </span>
+
+
             <% if @task.due_date.present? %>
+
+              <!-- FECHA -->
 
               <span class="flex items-center gap-1">
 
@@ -135,9 +173,7 @@
       <p class="text-sm text-gray-500 mt-2">
         Sigue estos pasos para completar la tarea.
       </p>
-      <p class="text-sm text-gray-500 mt-2">
 
-      </p>
     </div>
 
 
@@ -155,7 +191,9 @@
 
               <!-- NÚMERO -->
               <div class="flex items-center justify-center w-8 h-8 rounded-full text-gray-700 font-bold shrink-0">
+
                 <%= step.position %>
+
               </div>
 
 

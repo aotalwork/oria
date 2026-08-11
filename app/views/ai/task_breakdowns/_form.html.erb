@@ -56,6 +56,20 @@
                                  class: "w-full max-w-2xl rounded-lg border p-3" %>
     </div>
 
+    <div>
+      <%= f.label :status,
+                  "Estado",
+                  class: "block font-medium mb-2" %>
+
+      <%= f.select :status,
+                   [
+                     ["Pendiente", "pending"],
+                     ["Completada", "completed"]
+                   ],
+                   {},
+                   class: "w-full rounded-lg border p-3" %>
+    </div>
+
     <%= f.submit(
           @task.persisted? ? "Guardar y regenerar con IA" : "🧠 Dividir con IA",
           class: "bg-blue-600 text-white px-6 py-3 rounded-lg cursor-pointer"

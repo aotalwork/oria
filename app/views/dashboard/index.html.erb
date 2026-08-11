@@ -12,24 +12,7 @@
       Esto es lo que tienes hoy en ORIA.
     </p>
   </div>
-  <div class="grid grid-cols-3 gap-6 mb-10">
 
-    <div class="bg-white rounded-xl p-6 border border-gray-200 hover:border-gray-300 transition-colors">
-      <p class="text-sm font-medium text-gray-500 uppercase tracking-wide">Tareas</p>
-      <h2 class="text-3xl font-black text-gray-900 mt-1"><%= @total_tasks %></h2>
-    </div>
-
-    <div class="bg-white rounded-xl p-6 border border-gray-200 hover:border-gray-300 transition-colors">
-      <p class="text-sm font-medium text-gray-500 uppercase tracking-wide">Pendientes</p>
-      <h2 class="text-3xl font-black text-amber-600 mt-1"><%= @pending_tasks %></h2>
-    </div>
-
-    <div class="bg-white rounded-xl p-6 border border-gray-200 hover:border-gray-300 transition-colors">
-      <p class="text-sm font-medium text-gray-500 uppercase tracking-wide">Completadas</p>
-      <h2 class="text-3xl font-black text-green-600 mt-1"><%= @completed_tasks %></h2>
-    </div>
-
-  </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <% @tools.each do |tool| %>

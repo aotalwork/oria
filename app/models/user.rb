@@ -12,4 +12,5 @@ class User < ApplicationRecord
   has_many :sleep_logs, dependent: :destroy
   has_many :rewards, dependent: :destroy
   has_many :message_drafts, dependent: :destroy
+  has_many :procrastinations, dependent: :destroy
 end

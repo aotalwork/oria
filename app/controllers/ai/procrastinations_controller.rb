@@ -1,70 +1,95 @@
 module Ai
-class ProcrastinationsController < ApplicationController
-  def index
-    @procrastinations = Procrastination.order(created_at: :desc)
-  end
+  class ProcrastinationsController < ApplicationController
+    before_action :authenticate_user!
+    before_action :set_procrastination, only: %i[show edit update destroy]
 
-  def new
-    @procrastination = Procrastination.new
-  end
+    def index
+      @procrastinations = current_user.procrastinations.order(created_at: :desc)
+    end
 
-  def create
-    @procrastination = Procrastination.new(
-      task: procrastination_params[:task]
-    )
+    def show
+    end
 
-    begin
-      prompt = PromptBuilder.procrastination(@procrastination.task)
-      response = GeminiClient.call(prompt: prompt)
-      result = JSON.parse(response)
+    def new
+      @procrastination = current_user.procrastinations.build
+    end
 
-      @procrastination.assign_attributes(
-        first_step: result["first_step"],
-        estimated_minutes: result["estimated_minutes"],
-        motivation: result["motivation"],
-        blocker_plan: result["blocker_plan"]
-      )
+    def edit
+    end
 
-      if @procrastination.save
-        redirect_to @procrastination
-      else
+    def create
+      @procrastination = current_user.procrastinations.build(procrastination_params)
+
+      begin
+        prompt = PromptBuilder.procrastination(@procrastination.task)
+        response = GeminiClient.call(prompt: prompt)
+        result = JSON.parse(response)
+
+        @procrastination.assign_attributes(
+          first_step: result["first_step"],
+          estimated_minutes: result["estimated_minutes"],
+          motivation: result["motivation"],
+          blocker_plan: result["blocker_plan"]
+        )
+
+        if @procrastination.save
+          redirect_to ai_procrastination_path(@procrastination)
+        else
+          render :new, status: :unprocessable_entity
+        end
+
+      rescue JSON::ParserError
+        @procrastination.errors.add(
+          :base,
+          "La IA devolvió una respuesta inválida."
+        )
+
+        render :new, status: :unprocessable_entity
+
+      rescue StandardError => e
+        Rails.logger.error "PROCRASTINATION ERROR: #{e.class}: #{e.message}"
+        Rails.logger.error e.backtrace.join("\n")
+
+        @procrastination.errors.add(
+          :base,
+          "No se pudo generar la estrategia."
+        )
+
         render :new, status: :unprocessable_entity
       end
+    end
 
-    rescue JSON::ParserError
-      @procrastination.errors.add(
-        :base,
-        "La IA devolvió una respuesta inválida."
+    def update
+      if @procrastination.update(procrastination_params)
+        redirect_to ai_procrastination_path(@procrastination),
+                    notice: "Tarea actualizada."
+      else
+        render :edit, status: :unprocessable_entity
+      end
+    end
+
+    def destroy
+      @procrastination.destroy
+
+      redirect_to ai_procrastinations_path,
+                  notice: "Procrastinación eliminada correctamente.",
+                  status: :see_other
+    end
+
+    private
+
+    def procrastination_params
+      params.require(:procrastination).permit(
+        :task,
+        :first_step,
+        :estimated_minutes,
+        :motivation,
+        :blocker_plan
       )
+    end
 
-      render :new, status: :unprocessable_entity
-
-    rescue StandardError => e
-      Rails.logger.error "PROCRASTINATION ERROR: #{e.message}"
-
-      @procrastination.errors.add(
-        :base,
-        "No se pudo generar la estrategia."
-      )
-
-      render :new, status: :unprocessable_entity
+    def set_procrastination
+      @procrastination = current_user.procrastinations.find(params[:id])
     end
   end
-
-  def show
-    @procrastination = Procrastination.find(params[:id])
-  end
-
-  private
-
-  def procrastination_params
-    params.require(:procrastination).permit(
-      :task,
-      :first_step,
-      :estimated_time,
-      :motivation,
-      :blocker_plan
-    )
-  end
-end
 end
