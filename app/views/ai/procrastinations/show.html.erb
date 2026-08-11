@@ -59,32 +59,30 @@
 
   </section>
 
+  <div class="h-10"></div>
+  <h2 class="text-lg font-bold text-gray-900">
+    Tu primer paso
+  </h2>
+  <p class="mt-1 text-sm text-gray-500">
+    Empieza por algo pequeño. No tienes que terminar la tarea.
+  </p>
+  <div class="h-10"></div>
 
   <!-- PRIMER PASO -->
   <section class="mt-10 rounded-xl border border-gray-200 bg-white shadow-sm">
 
     <div class="px-6 py-5">
 
-      <h2 class="text-lg font-bold text-gray-900">
-        Tu primer paso
-      </h2>
 
-      <p class="mt-1 text-sm text-gray-500">
-        Empieza por algo pequeño. No tienes que terminar la tarea.
-      </p>
 
     </div>
 
 
     <div class="p-6">
 
-      <div class="rounded-xl border border-indigo-100 bg-indigo-50 px-5 py-5">
-
         <p class="text-lg font-semibold leading-7 text-gray-900">
           <%= @procrastination.first_step %>
         </p>
-
-      </div>
 
 
       <% if @procrastination.estimated_minutes.present? %>
@@ -116,7 +114,15 @@
 
   </section>
 
+  <div class="h-10"></div>
 
+  <h2 class="mt-1 text-lg font-bold text-gray-900">
+    Recuerda
+  </h2>
+  <p class="mt-1 text-sm text-gray-500">
+    Motivación 💪
+  </p>
+  <div class="h-10"></div>
   <!-- MOTIVACIÓN -->
   <section class="mt-8 rounded-xl border border-gray-200 bg-white shadow-sm">
 
@@ -124,19 +130,11 @@
 
       <div class="flex items-start gap-4">
 
-        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-yellow-50">
-          💪
-        </div>
+
 
         <div class="min-w-0">
 
-          <p class="text-xs font-semibold uppercase tracking-wide text-gray-400">
-            Motivación
-          </p>
 
-          <h2 class="mt-1 text-lg font-bold text-gray-900">
-            Recuerda
-          </h2>
 
           <p class="mt-3 leading-7 text-gray-600">
             <%= @procrastination.motivation %>
@@ -149,8 +147,14 @@
     </div>
 
   </section>
-
-
+  <div class="h-10"></div>
+  <h2 class="mt-1 text-lg font-bold text-gray-900">
+    ¿Te has bloqueado?
+  </h2>
+  <p class="mt-1 text-sm text-gray-500">
+    Si te bloqueas 🧱  No intentes forzarlo. Haz esto.
+  </p>
+  <div class="h-10"></div>
   <!-- BLOQUEO -->
   <section class="mt-8 rounded-xl border border-gray-200 bg-white shadow-sm">
 
@@ -158,23 +162,8 @@
 
       <div class="flex items-start gap-4">
 
-        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-50">
-          🧱
-        </div>
 
         <div class="min-w-0 flex-1">
-
-          <p class="text-xs font-semibold uppercase tracking-wide text-gray-400">
-            Si te bloqueas
-          </p>
-
-          <h2 class="mt-1 text-lg font-bold text-gray-900">
-            ¿Te has bloqueado?
-          </h2>
-
-          <p class="mt-1 text-sm text-gray-500">
-            No intentes forzarlo. Haz esto.
-          </p>
 
           <div class="mt-5 rounded-xl bg-gray-50 px-5 py-4">
 
@@ -192,13 +181,13 @@
 
   </section>
 
-
+  <div class="h-10"></div>
   <!-- RECORDATORIO -->
-  <section class="mt-8 mb-12 rounded-xl border border-indigo-100 bg-indigo-50">
+  <section class="mt-8 mb-12 rounded-xl  bg-indigo-50">
 
     <div class="flex items-start gap-4 p-6">
 
-      <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-sm">
+      <div class="flex h-10 w-10 shrink-0 items-center justify-center">
         🎯
       </div>
 
