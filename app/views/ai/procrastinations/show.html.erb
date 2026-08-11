@@ -1,0 +1,263 @@
+<div class="max-w-2xl mx-auto">
+
+  <!-- VOLVER -->
+
+  <%= link_to ai_procrastinations_path,
+              class: "inline-flex items-center mb-6 text-gray-500 hover:text-gray-900 transition-colors duration-200",
+              aria: { label: "Volver a procrastinaciones" } do %>
+
+    ```
+    <svg xmlns="http://www.w3.org/2000/svg"
+         class="w-5 h-5"
+         viewBox="0 0 24 24"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="2"
+         stroke-linecap="round"
+         stroke-linejoin="round">
+
+      <path d="M19 12H5"/>
+      <path d="M12 19l-7-7 7-7"/>
+
+    </svg>
+    ```
+
+  <% end %>
+
+  <!-- TARJETA DE LA TAREA -->
+
+  <div class="flex border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition-all">
+
+    ```
+    <!-- BARRA LATERAL -->
+    <div class="w-1.5 bg-indigo-500 shrink-0"></div>
+
+    <div class="flex-1 p-5">
+
+      <div class="flex justify-between items-start gap-4">
+
+        <div class="min-w-0">
+
+          <div class="flex items-center gap-2 mb-2">
+        <span class="text-xs font-semibold uppercase tracking-wide text-indigo-600">
+          Anti procrastinación
+        </span>
+          </div>
+
+          <h1 class="text-3xl font-bold text-gray-900">
+            <%= @procrastination.task %>
+          </h1>
+
+          <div class="mt-3 flex items-center gap-4 text-xs text-gray-400">
+
+        <span class="flex items-center gap-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+          Estrategia generada por ORIA
+        </span>
+
+            <% if @procrastination.estimated_minutes.present? %>
+
+          <span class="flex items-center gap-1">
+
+            <svg class="w-3.5 h-3.5"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 viewBox="0 0 24 24">
+
+              <circle cx="12" cy="12" r="9"/>
+              <path stroke-linecap="round" d="M12 7v5l3 2"/>
+
+            </svg>
+
+            <%= @procrastination.estimated_minutes %> min
+
+          </span>
+
+            <% end %>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+    ```
+
+  </div>
+
+  <!-- ESPACIO ENTRE TARJETAS -->
+
+  <div class="h-10"></div>
+
+  <!-- PRIMER PASO -->
+
+  <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+
+    ```
+    <div class="pb-6 border-b border-gray-100">
+
+      <div class="flex items-center gap-3">
+
+        <div class="flex items-center justify-center w-10 h-10 rounded-full bg-indigo-50 text-indigo-600">
+          <span class="text-lg">🚀</span>
+        </div>
+
+        <div>
+          <h2 class="font-bold text-xl text-gray-900">
+            Tu primer paso
+          </h2>
+
+          <p class="text-sm text-gray-500 mt-1">
+            Empieza por algo pequeño. No tienes que terminar la tarea.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="pt-6">
+
+      <div class="rounded-xl border border-indigo-100 bg-indigo-50/50 p-5">
+
+        <p class="text-lg font-semibold text-gray-900 leading-relaxed">
+          <%= @procrastination.first_step %>
+        </p>
+
+        <% if @procrastination.estimated_minutes.present? %>
+
+          <div class="mt-4 inline-flex items-center gap-2 rounded-full bg-white border border-indigo-100 px-3 py-1.5 text-sm font-medium text-indigo-700">
+
+            <svg class="w-4 h-4"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 viewBox="0 0 24 24">
+
+              <circle cx="12" cy="12" r="9"/>
+              <path stroke-linecap="round" d="M12 7v5l3 2"/>
+
+            </svg>
+
+            Solo <%= @procrastination.estimated_minutes %> minutos
+
+          </div>
+
+        <% end %>
+
+      </div>
+
+    </div>
+    ```
+
+  </div>
+
+  <!-- ESPACIO -->
+
+  <div class="h-6"></div>
+
+  <!-- MOTIVACIÓN -->
+
+  <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+
+    ```
+    <div class="flex items-start gap-4">
+
+      <div class="flex items-center justify-center w-10 h-10 rounded-full bg-yellow-50 shrink-0">
+        <span class="text-lg">💪</span>
+      </div>
+
+      <div class="flex-1">
+
+        <h2 class="font-bold text-lg text-gray-900">
+          Recuerda
+        </h2>
+
+        <p class="text-gray-600 mt-2 leading-relaxed">
+          <%= @procrastination.motivation %>
+        </p>
+
+      </div>
+
+    </div>
+    ```
+
+  </div>
+
+  <!-- ESPACIO -->
+
+  <div class="h-6"></div>
+
+  <!-- BLOQUEO -->
+
+  <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+
+    ```
+    <div class="flex items-start gap-4">
+
+      <div class="flex items-center justify-center w-10 h-10 rounded-full bg-orange-50 shrink-0">
+        <span class="text-lg">🧱</span>
+      </div>
+
+      <div class="flex-1">
+
+        <h2 class="font-bold text-lg text-gray-900">
+          ¿Te has bloqueado?
+        </h2>
+
+        <p class="text-sm text-gray-500 mt-1">
+          No intentes forzarlo. Haz esto.
+        </p>
+
+        <div class="mt-4 rounded-xl bg-gray-50 border border-gray-100 p-4">
+
+          <p class="text-gray-700 leading-relaxed">
+            <%= @procrastination.blocker_plan %>
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+    ```
+
+  </div>
+
+  <!-- ESPACIO -->
+
+  <div class="h-6"></div>
+
+  <!-- CTA -->
+
+  <div class="rounded-xl border border-indigo-100 bg-indigo-50 p-6 text-center">
+
+    ```
+    <div class="text-2xl">
+      🎯
+    </div>
+
+    <h2 class="mt-3 font-bold text-gray-900">
+      No pienses en terminarla
+    </h2>
+
+    <p class="mt-2 text-sm text-gray-600">
+      Concéntrate únicamente en hacer el primer paso.
+    </p>
+
+    <%= link_to ai_procrastinations_path,
+                class: "mt-5 inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-indigo-700 transition-colors shadow-sm" do %>
+
+      Lo voy a hacer
+
+      <span>→</span>
+
+    <% end %>
+    ```
+
+  </div>
+
+</div>

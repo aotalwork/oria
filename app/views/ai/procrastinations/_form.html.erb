@@ -1,0 +1,41 @@
+<%= form_with model: @procrastination,
+              url: @procrastination.persisted? ? ai_procrastinations_path(@procrastination) : ai_procrastinations_path,
+              method: @procrastination.persisted? ? :patch : :post do |f| %>
+
+  <% if @procrastination.errors.any? %>
+    <div class="mt-6 rounded-lg bg-red-50 p-4 text-sm text-red-700">
+      <p class="font-semibold">
+        No se pudo crear la tarea:
+      </p>
+
+      <ul class="mt-2 list-disc pl-5">
+        <% @procrastination.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mt-8">
+    <%= f.label :task,
+                   "Tu tarea",
+                   class: "block text-sm font-semibold text-gray-900" %>
+
+    <%= f.text_area :task,
+                       rows: 5,
+                       placeholder: "Ejemplo: Tengo que hacer la declaración de la renta...",
+                       class: "mt-2 w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 resize-none" %>
+    <%= f.submit "Ayúdame a empezar 🚀",
+                 class: "w-full rounded-xl bg-indigo-600 px-5 py-3.5 text-sm font-semibold  shadow-sm hover:bg-indigo-700 transition cursor-pointer" %>
+
+
+    <p class="mt-5 text-center text-xs text-gray-500">
+      No necesitas terminar la tarea.
+      Solo necesitamos encontrar el primer paso.
+    </p>
+
+  </div>
+
+
+
+<% end %>

@@ -1,0 +1,2 @@
+class Procrastination < ApplicationRecord
+end

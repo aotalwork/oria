@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_11_081457) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_11_090530) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -36,6 +36,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_11_081457) do
     t.datetime "created_at", null: false
     t.string "recipient"
     t.string "subject"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "procrastinations", force: :cascade do |t|
+    t.text "blocker_plan"
+    t.datetime "created_at", null: false
+    t.integer "estimated_minutes"
+    t.text "first_step"
+    t.text "motivation"
+    t.string "task"
     t.datetime "updated_at", null: false
   end
 

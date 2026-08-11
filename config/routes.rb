@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get "settings/update"
   namespace :ai do
     resources :task_breakdowns
-    resources :procrastinations, only: [:index, :create]
+    resources :procrastinations, only: [:index, :new, :create, :show]
     resources :planners, only: [:index, :create]
     resources :pomodoros, only: [:index, :create]
     resources :text_simplifiers, only: [:index, :create]

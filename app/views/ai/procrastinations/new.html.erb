@@ -1,0 +1,27 @@
+<div class="min-h-screen bg-gray-50 px-6 py-12">
+  <div class="mx-auto max-w-2xl">
+
+    <%= link_to "← Volver",
+                ai_procrastinations_path,
+                class: "text-sm font-medium text-gray-600 hover:text-gray-900" %>
+
+    <div class="mt-8 rounded-2xl bg-white p-8 shadow-sm border border-gray-200">
+
+      <div class="text-center">
+        <div class="text-5xl">🚀</div>
+
+        <h1 class="mt-4 text-3xl font-bold text-gray-900">
+          ¿Qué estás posponiendo?
+        </h1>
+
+        <p class="mt-3 text-gray-600">
+          Escribe la tarea que tienes pendiente.
+          Nosotros encontraremos el primer paso.
+        </p>
+      </div>
+
+      <%= render "form" %>
+
+    </div>
+  </div>
+</div>

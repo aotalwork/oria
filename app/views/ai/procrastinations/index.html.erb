@@ -1,4 +1,104 @@
-<div>
-  <h1 class="font-bold text-4xl">Ai::Procrastinations#index</h1>
-  <p>Find me in app/views/ai/procrastinations/index.html.erb</p>
+<!-- VOLVER -->
+<%= link_to authenticated_root_path,
+            class: "inline-flex items-center mb-6 text-gray-500 hover:text-gray-900 transition-colors duration-200",
+            aria: { label: "Volver a tareas" } do %>
+
+  <svg xmlns="http://www.w3.org/2000/svg"
+       class="w-5 h-5"
+       viewBox="0 0 24 24"
+       fill="none"
+       stroke="currentColor"
+       stroke-width="2"
+       stroke-linecap="round"
+       stroke-linejoin="round">
+
+    <path d="M19 12H5"/>
+    <path d="M12 19l-7-7 7-7"/>
+
+  </svg>
+
+<% end %>
+<div class="max-w-5xl mx-auto px-6 py-10">
+  <div class="flex items-center justify-between mb-8">
+    <div>
+      <h1 class="text-3xl font-bold text-gray-900">
+        Anti procrastinación
+      </h1>
+
+      <p class="mt-2 text-gray-600">
+        Convierte tus tareas en un primer paso fácil de empezar.
+      </p>
+    </div>
+
+    <%= link_to new_ai_procrastination_path,
+                class: "flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-lg font-medium text-sm hover:bg-blue-700 transition-colors shadow-sm" do %>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+      </svg>
+      Nueva tarea
+    <% end %>
+  </div>
+
+  <% if @procrastinations.any? %>
+    <div class="grid gap-5">
+      <% @procrastinations.each do |procrastination| %>
+        <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition">
+
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h2 class="text-xl font-semibold text-gray-900">
+                <%= procrastination.task %>
+              </h2>
+
+              <p class="mt-2 text-sm text-gray-500">
+                Creada el
+                <%= l(procrastination.created_at, format: :short) %>
+              </p>
+            </div>
+
+            <% if procrastination.estimated_minutes.present? %>
+              <span class="rounded-full bg-indigo-50 px-3 py-1 text-sm font-medium text-indigo-700">
+                <%= procrastination.estimated_minutes %> min
+              </span>
+            <% end %>
+          </div>
+
+          <% if procrastination.first_step.present? %>
+            <div class="mt-5 rounded-lg bg-gray-50 p-4">
+              <p class="text-sm font-semibold text-gray-700">
+                🚀 Primer paso
+              </p>
+
+              <p class="mt-1 text-gray-600">
+                <%= procrastination.first_step %>
+              </p>
+            </div>
+          <% end %>
+
+          <div class="mt-5">
+            <%= link_to "Ver estrategia →",
+                        ai_procrastination_path(procrastination),
+                        class: "text-sm font-semibold text-indigo-600 hover:text-indigo-800" %>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="rounded-xl border border-dashed border-gray-300 bg-gray-50 p-12 text-center">
+      <div class="text-4xl">🚀</div>
+
+      <h2 class="mt-4 text-xl font-semibold text-gray-900">
+        Todavía no tienes ninguna tarea
+      </h2>
+
+      <p class="mt-2 text-gray-600">
+        Añade una tarea y descubre cuál es el primer paso.
+      </p>
+
+      <%= link_to "Crear mi primera tarea",
+                  new_ai_procrastination_path,
+                  class: "mt-6 inline-block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-semibold text-blue-600  hover:bg-indigo-700 transition" %>
+    </div>
+  <% end %>
 </div>
