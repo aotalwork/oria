@@ -70,7 +70,7 @@ gem "devise", "~> 5.0"
 gem "rspec-rails", "~> 8.0", groups: [:development, :test]
 
 gem "rubocop", "~> 1.89", group: :development, require: false
-gem "rubocop-rails", "~> 2.36", group: :development, require: false
+gem "rubocop-rails", "~> 2.37", group: :development, require: false
 
 gem "dotenv-rails", "~> 3.2", groups: [:development, :test]
 
